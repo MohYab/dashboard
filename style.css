@@ -1,0 +1,273 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #000000;
+    padding: 20px;
+    margin: 0;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease-in-out;
+  }
+
+  #visa-bilder-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: transparent;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  
+  #visa-bilder-btn:hover {
+    background: #2980b9;
+  }
+
+  .bg-selector {
+    position: relative;
+    top: 10px;
+    left: 10px;
+    max-height: 10em;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    padding: 10px;
+    border-radius: 10px;
+    display: none;
+    overflow: scroll;
+  }
+
+  .bg-selector img {
+    width: 80px;
+    margin: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 5px;
+  }
+
+  .bg-selector img:hover {
+    border-color: #333;
+  }
+  
+  /* ---------- Toppbar (klocka och datum) ---------- */
+  .header {
+    display: flex;
+    justify-content: center; /* Centrera innehåll */
+    align-items: center;
+    background-color: #FFFFFF;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 600px; /* valfri maxbredd */
+    margin: 0 auto 20px; /* centrera och ge avstånd nedåt */
+  }
+  
+  #clock-date {
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+  
+  #clock {
+    margin-right: 10px;
+  }
+  
+  /* ---------- Rubrik ---------- */
+  #dashboard-title {
+    display: block;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 20px auto 30px;
+    cursor: pointer; /* Visar att den kan klickas/redigeras */
+    color: #ffffff;
+    width: 100%;
+    max-width: 800px; 
+  }
+  
+  /* ---------- Dashboard-layout ---------- */
+  .dashboard-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* ---------- Boxar (Snabb­länkar, Väder, etc.) ---------- */
+  .box {
+    max-height: 20em;
+    background:rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 15px 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    min-height: 200px;
+    overflow: scroll;
+  }
+  
+  .box h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  
+  /* ---------- Länksamling ---------- */
+  #links-box ul {
+    list-style-type: none;
+    margin-top: 10px;
+    padding: 0;
+  }
+
+  #links-box li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    background: #F9F9F9;
+    border-radius: 6px;
+    padding: 6px 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  #links-box li img {
+    width: 16px;
+    height: 16px;
+    object-fit: cover;
+  }
+
+  #links-box a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    margin-left: 5px;
+  }
+
+  #links-box button.remove-link-btn {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #e74c3c;
+    transition: color 0.2s ease;
+  }
+
+  #links-box button.remove-link-btn:hover {
+    color: #c0392b;
+  }
+
+  /* Plus-knappen för att visa/dölja formuläret */
+  #toggle-add-link-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    display: block;
+    margin: 1px auto;
+    transition: transform 0.2s ease;
+  }
+
+  #toggle-add-link-btn:hover {
+    transform: scale(1.1);
+  }
+
+
+  /* Formulär för att lägga till länk */
+  #add-link-container {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #add-link-container input {
+    width: 100%;
+    margin: 2px;
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+  #add-link-container button#add-link-btn {
+    background: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin: 3px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: background 0.2s ease;
+  }
+
+  #add-link-container button#add-link-btn:hover {
+    background: #2980b9;
+  }
+
+  
+  /* ---------- Väderinfo ---------- */
+  #weather-box p {
+    margin: 8px 0;
+    font-size: 0.95rem;
+  }
+  
+  /* ---------- Externt API ---------- */
+  #extra-api-box p {
+    margin: 8px 0;
+    font-size: 0.95rem;
+  }
+  
+  /* ---------- Anteckningar ---------- */
+  #notes-box textarea {
+    width: 100%;
+    height: 180px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    resize: vertical;
+  }
+
+  /* Anpassning för mobilläge (max 768px bredd) */
+@media only screen and (max-width: 768px) {
+  body {
+    background-size: cover; /* eller 'contain' beroende på bild */
+    background-position: top center;
+    background-attachment: fixed; /* Om du vill att bilden inte scrollar */
+  }
+
+  /* Du kan också minska padding eller justera andra element */
+  body {
+    padding: 10px;
+  }
+
+  .dashboard-container {
+    grid-template-columns: 1fr; /* Endast en kolumn på små skärmar */
+    gap: 15px;
+  }
+
+  .header,
+  #dashboard-title {
+    font-size: 1.5rem;
+    padding: 10px;
+  }
+
+  #visa-bilder-btn {
+    bottom: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+  }
+}
+
+

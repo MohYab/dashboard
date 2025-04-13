@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <!-- (1) Klocka och datum -->
+  <div class="header">
+    <div id="clock-date">
+      <span id="clock"></span>
+      <span id="date"></span>
+    </div>
+  </div>
+
+  <!-- (2) Rubrik (redigerbar) -->
+  <h1 id="dashboard-title" contenteditable="false"></h1>
+
+  <div class="dashboard-container">
+
+    <!-- (3) Länksamling -->
+  <div class="box" id="links-box">
+    <h2>Snabblänkar</h2>
+    <ul id="link-list"></ul>
+    <button id="toggle-add-link-btn" class="plus-btn">
+      <img src="/public/icons/icons8-plus00.svg" alt="Ikon" width="60" height="60">
+    </button>
+    <!-- Formuläret är dolt initialt -->
+    <div id="add-link-container" style="display: none;">
+      <input type="text" id="new-link-title" placeholder="Rubrik" />
+      <input type="text" id="new-link-url" placeholder="URL (https://...)" />
+      <button id="add-link-btn">Lägg till</button>
+    </div>
+  </div>
+
+    
+    <!-- (4) Väderinfo -->
+    <div class="box" id="weather-box">
+      <h2>Dagens väder</h2>
+      <div id="weather-info">
+        <p>Laddar väder...</p>
+      </div>
+    </div>
+
+    <!-- (5) Extern data – valfritt API -->
+    <div class="box" id="extra-api-box">
+      <h2>Nyheter</h2>
+      <input type="text" id="gdelt-query" placeholder="Sök nyheter om ett ämne">
+      <button onclick="fetchExternalData()">🔍 Sök</button>
+      
+      <!-- Här visas artiklarna -->
+      <div id="extra-api-content">
+        <p>Laddar data...</p>
+      </div>
+    </div>
+
+    <!-- (6) Anteckningar -->
+    <div class="box" id="notes-box">
+      <h2>Anteckningar</h2>
+      <textarea id="notes-area" placeholder=></textarea>
+    </div>
+  </div>
+  <button id="visa-bilder-btn" title="Byt bakgrund">
+    <img src="/public/icons/picture.png" alt="Ikon" width="24" height="24">
+  </button>
+  <div class="bg-selector"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
